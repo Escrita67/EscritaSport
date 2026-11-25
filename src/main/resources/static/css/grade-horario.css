@@ -1,0 +1,279 @@
+/* =========================================================================
+   1. TÍTULO E GRADE DE HORÁRIOS
+   ========================================================================= */
+.topbar-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.timeline-container {
+  overflow-x: auto;
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  margin-top: 24px;
+}
+
+.timeline-header {
+  display: grid;
+  grid-template-columns: 240px repeat(17, 90px);
+  border-bottom: 1px solid var(--border);
+  background: #121620;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.timeline-header div {
+  padding: 12px;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.quadra-row {
+  display: grid;
+  grid-template-columns: 240px repeat(17, 90px);
+  border-bottom: 1px solid var(--border);
+  min-height: 80px;
+}
+
+.quadra-info {
+  padding: 16px;
+  background: #131722;
+  border-right: 1px solid var(--border);
+}
+
+.quadra-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+.quadra-piso {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.slot-cell {
+  border-right: 1px solid rgba(255, 255, 255, 0.03);
+  position: relative;
+  padding: 4px;
+}
+
+.booking-block {
+  background: rgba(204, 255, 0, 0.15);
+  border: 1px solid var(--primary);
+  border-radius: 6px;
+  padding: 6px 8px;
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.free-slot {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  color: #4b5563;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.free-slot:hover {
+  background: rgba(204, 255, 0, 0.08);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* =========================================================================
+   2. MODAL DE RESERVA RÁPIDA
+   ========================================================================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(9, 12, 18, 0.8);
+  backdrop-filter: blur(4px);
+  display: none; /* Oculto por padrão; passa a flex ao clicar num horário */
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 16px;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  width: 100%;
+  max-width: 420px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modal-header h3 {
+  font-size: 1.05rem;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: #ffffff;
+}
+
+.modal-info-badge {
+  background: rgba(204, 255, 0, 0.1);
+  border: 1px solid rgba(204, 255, 0, 0.3);
+  color: var(--primary);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.86rem;
+  margin-bottom: 18px;
+}
+
+.modal-form-group {
+  margin-bottom: 14px;
+}
+
+.modal-form-group label {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.modal-form-group input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 14px;
+  background: #0c1017;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.modal-form-group input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+.brand a{
+  text-decoration: none;
+  color:inherit;
+
+}
+
+/* =========================================================================
+   3. PERFIL DO DONO DA SESSÃO E BOTÃO SAIR
+   ========================================================================= */
+.user-session-box {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1;
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary);
+  flex-shrink: 0;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+  line-height: 1.25;
+}
+
+.user-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-role {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-logout {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-logout:hover {
+  background: #ef4444;
+  color: #ffffff;
+}

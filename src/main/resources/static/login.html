@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EscritaSport - Acesso e Registo</title>
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="preconnect" href="https://googleapis.com">
+  <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo">⚡ EscritaSport</div>
+<!--    <span class="badge">H2 / MySQL + Spring Mail</span> -->
+  </header>
+
+  <main class="login-wrapper">
+    <section class="card">
+      <!-- Seletor de Abas Partilhadas -->
+      <div class="tabs">
+        <button type="button" class="tab-btn active" id="tab-login">Entrar</button>
+        <button type="button" class="tab-btn" id="tab-cadastro">Criar Conta</button>
+      </div>
+
+      <!-- Alertas -->
+      <div id="alerta-erro" class="alerta alerta-erro"></div>
+      <div id="alerta-sucesso" class="alerta alerta-sucesso"></div>
+
+      <!-- Formulário de Login -->
+      <form id="form-login" class="auth-form">
+        <div class="card-header">
+          <h2>Bem-vindo de volta</h2>
+          <p>Aceda ao painel de gestão de quadras e reservas</p>
+        </div>
+
+        <div class="form-group">
+          <label for="login-usuario">E-mail ou Usuário</label>
+          <input type="text" id="login-usuario" placeholder="admin@escritasport.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="login-senha">Senha</label>
+          <input type="password" id="login-senha" placeholder="••••••••" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Entrar no Sistema</button>
+      </form>
+
+      <!-- Formulário de Criar Conta -->
+      <form id="form-cadastro" class="auth-form" style="display: none;">
+        <div class="card-header">
+          <h2>Criar Nova Conta</h2>
+          <p>Registe-se para gerir horários e arenas</p>
+        </div>
+
+        <div class="form-group">
+          <label for="cad-nome">Nome Completo</label>
+          <input type="text" id="cad-nome" placeholder="Ex: João Silva" required>
+        </div>
+
+        <div class="form-group">
+          <label for="cad-email">E-mail</label>
+          <input type="email" id="cad-email" placeholder="joao@escritasport.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="cad-senha">Senha</label>
+          <input type="password" id="cad-senha" placeholder="Mínimo 6 caracteres" minlength="6" required>
+        </div>
+
+        <div class="form-group">
+          <label for="cad-confirmar">Confirmar Senha</label>
+          <input type="password" id="cad-confirmar" placeholder="Repita a senha" minlength="6" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Criar Conta</button>
+      </form>
+
+      <div class="footer-note">
+        Gestão de Arenas &bull; Acesso Seguro
+      </div>
+    </section>
+  </main>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

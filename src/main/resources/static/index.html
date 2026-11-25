@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EscritaSport - Gestão de Quadras e Reservas</title>
+  <link rel="icon" href="img/sport-favicon.png">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="logo"> <a  href="grade-horario.html">⚡EscritaSport</a></div>
+<!--    <span class="badge">H2 / MySQL + Spring Mail</span> -->
+  </header>
+
+  <main class="container">
+    <!-- Seção Quadras -->
+    <section class="card">
+      <h2>Cadastrar Quadra</h2>
+      <form id="form-quadra">
+        <div class="form-group">
+          <label for="quadra-nome">Nome da Quadra</label>
+          <input type="text" id="quadra-nome" placeholder="Ex: Quadra 01 - Beach Tennis" required>
+        </div>
+        <div class="form-group">
+          <label for="quadra-piso">Tipo de Piso</label>
+          <input type="text" id="quadra-piso" placeholder="Ex: Sintético ou outros..." required>
+        </div>
+        <div class="form-group">
+          <label for="quadra-preco">Preço por Hora (R$)</label>
+          <input type="number" id="quadra-preco" step="0.01" placeholder="Ex: 120.00" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar Quadra</button>
+      </form>
+
+      <h3>Quadras Cadastradas</h3>
+      <table class="table" id="tabela-quadras">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Tipo de Piso</th>
+            <th>Preço/Hora</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- Seção Reservas -->
+    <section class="card">
+      <h2>Nova Reserva de Horário</h2>
+      
+      <!-- Alertas de Validação de Conflito -->
+      <div id="alerta-conflito" class="alerta alerta-erro" style="display:none;">
+        ⚠️ <strong>Horário indisponível!</strong> Esta quadra já possui reserva no período selecionado.
+      </div>
+      <div id="alerta-sucesso" class="alerta alerta-sucesso" style="display:none;">
+        ✅ <strong>Reserva confirmada!</strong> E-mail de confirmação enviado via Spring Mail.
+      </div>
+
+      <form id="form-reserva">
+        <div class="form-group">
+          <label for="reserva-quadra">Selecionar Quadra</label>
+          <select id="reserva-quadra" required></select>
+        </div>
+        <div class="form-group">
+          <label for="reserva-cliente">Nome Completo do Cliente</label>
+          <input type="text" id="reserva-cliente" placeholder="Ex: Francisco Simão Escrita António" required>
+        </div>
+        <div class="form-group">
+          <label for="reserva-data">Data da Partida</label>
+          <input type="date" id="reserva-data" required>
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label for="reserva-inicio">Hora Início</label>
+            <input type="time" id="reserva-inicio" required>
+          </div>
+          <div class="form-group">
+            <label for="reserva-fim">Hora Fim</label>
+            <input type="time" id="reserva-fim" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Confirmar Reserva &amp; Notificar</button>
+      </form>
+
+      <h3>Reservas Confirmadas &amp; Logs</h3>
+      <table class="table" id="tabela-reservas">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Quadra</th>
+            <th>Data</th>
+            <th>Horário</th>
+            <th>Spring Mail</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+/* =========================================================================
+   1. TÍTULO DO CABEÇALHO SUPERIOR
+   ========================================================================= */
+.topbar-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* =========================================================================
+   2. GRELHA RESPONSIVA DE QUADRAS
+   ========================================================================= */
+.quadras-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+/* =========================================================================
+   3. ESTRUTURA DO CARTÃO INDIVIDUAL DE QUADRA
+   ========================================================================= */
+.quadra-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Topo colorido do cartão com etiqueta de estado e preço */
+.quadra-banner {
+  height: 100px;
+  background: linear-gradient(135deg, #1b2432 0%, #0d121a 100%);
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: rgba(204, 255, 0, 0.15);
+  color: var(--primary);
+}
+
+.quadra-preco {
+  font-weight: 800;
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+
+/* =========================================================================
+   4. DETALHES TÉCNICOS E LINHAS DE INFORMAÇÃO
+   ========================================================================= */
+.quadra-details {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quadra-nome {
+  font-size: 1.05rem;
+  color: #ffffff;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.86rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 8px;
+}
+
+.item-row span:first-child {
+  color: var(--text-muted);
+}
+
+.item-row span:last-child {
+  font-weight: 600;
+}
+
+/* =========================================================================
+   5. BOTÕES DE AÇÃO NO RODAPÉ DO CARTÃO
+   ========================================================================= */
+.quadra-actions {
+  margin-top: auto;
+  display: flex;
+  gap: 8px;
+  padding-top: 10px;
+}
+
+.btn-ver-grade {
+  flex: 1;
+  justify-content: center;
+}
+
+.btn-excluir {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  transition: background-color 0.2s;
+}
+
+.btn-excluir:hover {
+  background: rgba(239, 68, 68, 0.25);
+}
+
+.brand a{
+  text-decoration: none;
+  color: inherit;
+}

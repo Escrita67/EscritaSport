@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- Configurações básicas de codificação e responsividade -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EscritaSport - Gestão de Quadras</title>
+  <link rel="icon" href="img/sport-favicon.png">
+
+
+  <!-- Estilos globais partilhados e estilos específicos desta página -->
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/quadras.css">
+
+  <!-- Importação da família tipográfica Plus Jakarta Sans -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
+</head>
+<body>
+
+  <!-- ===================================================================
+       BARRA LATERAL DE NAVEGAÇÃO (SIDEBAR)
+       =================================================================== -->
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-logo"><a href="grade-horario.html">⚡ EscritaSport </a></div></div>
+    <div class="arena-badge">📍 Arena Central &amp;</div>
+
+    <!-- Menu principal do sistema -->
+    <ul class="nav-links">
+      <li><a href="grade-horario.html">📅 Grade de Horários</a></li>
+      <li><a href="reservar-clientes.html">📑 Reservas &amp; Clientes</a></li>
+      <li><a href="quadras.html" class="active">🎾 Gestão de Quadras</a></li>
+      <li><a href="configuracoes.html">⚙️ Configurações</a></li>
+      <li><a href="index.html">🚀 Painel</a></li>
+    </ul>
+  </aside>
+
+  <!-- ===================================================================
+       ÁREA PRINCIPAL DE CONTEÚDO
+       =================================================================== -->
+  <main class="main-content">
+
+    <!-- Cabeçalho superior com título da vista e botão de cadastro -->
+    <header class="topbar">
+      <h2 class="topbar-title">Gestão Operacional de Quadras</h2>
+      <button type="button" id="btn-nova-quadra" class="btn btn-primary">+ Cadastrar Nova Quadra</button>
+    </header>
+
+    <div class="content-body">
+
+      <!-- =================================================================
+           CARTÕES DE INDICADORES (KPIs)
+           ================================================================= -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="label">Total de Quadras</div>
+          <div class="value" id="kpi-total-quadras">4</div>
+          <div class="sub">3 Operando &bull; 1 Manutenção</div>
+        </div>
+        <div class="kpi-card">
+          <div class="label">Ticket Médio / Hora</div>
+          <div class="value">R$ 132,50</div>
+          <div class="sub">Tarifa base dos pisos</div>
+        </div>
+      </div>
+
+      <!-- =================================================================
+           GRELHA DINÂMICA DE CARTÕES DAS QUADRAS
+           Preenchida automaticamente pelo ficheiro js/quadras.js
+           ================================================================= -->
+      <div class="quadras-grid" id="lista-quadras-cards"></div>
+
+    </div>
+  </main>
+
+  <!-- Dados e funções partilhadas (quadrasMock) -->
+  <script src="js/shared.js"></script>
+  <!-- Script responsável por renderizar, adicionar e remover quadras -->
+  <script src="js/quadras.js"></script>
+</body>
+</html>

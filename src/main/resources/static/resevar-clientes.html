@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- Configurações básicas de codificação e responsividade -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EscritaSport - Histórico de Reservas &amp; Spring Mail</title>
+  <link rel="icon" href="img/sport-favicon.png">
+
+  <!-- Estilos globais partilhados e estilos específicos desta página -->
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/reservar-cliente.css">
+
+  <!-- Importação da fonte Plus Jakarta Sans -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
+</head>
+<body>
+
+  <!-- ===================================================================
+       BARRA LATERAL DE NAVEGAÇÃO (SIDEBAR)
+       =================================================================== -->
+  <aside class="sidebar">
+    <div class="brand"><a href="grade-horario.html"><div class="brand-logo">⚡ EscritaSport</div></a></div>
+    <div class="arena-badge">📍 Arena Central Beach &amp; Futsal</div>
+
+    <ul class="nav-links">
+      <li><a href="grade-horario.html">📅 Grade de Horários</a></li>
+      <li><a href="resevar-clientes.html" class="active">📑 Reservas &amp; Clientes</a></li>
+      <li><a href="quadras.html">🎾 Gestão de Quadras</a></li>
+      <li><a href="configuracoes.html">⚙️ Configurações</a></li>
+      <li><a href="index.html">🚀 Painel Direto (CRUD)</a></li>
+    </ul>
+  </aside>
+
+  <!-- ===================================================================
+       ÁREA PRINCIPAL DE CONTEÚDO
+       =================================================================== -->
+  <main class="main-content">
+
+    <!-- Cabeçalho superior -->
+    <header class="topbar">
+      <h2 class="topbar-title">Histórico &amp; Auditoria de Disparos Spring Mail</h2>
+      <a href="index.html" class="btn btn-primary">+ Criar Reserva</a>
+    </header>
+
+    <div class="content-body">
+
+      <!-- Cartões de Indicadores (KPIs) -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="label">Taxa de Sucesso Spring Mail</div>
+          <div class="value">99.4%</div>
+          <div class="sub">SMTP Porta 587 TLS Conectado</div>
+        </div>
+        <div class="kpi-card">
+          <div class="label">Reservas Computadas</div>
+          <div class="value" id="kpi-count-reservas">0</div>
+          <div class="sub">Sem sobreposição de horários</div>
+        </div>
+      </div>
+
+      <!-- Barra de Pesquisa Corrigida (Blindada contra quebra de layout) -->
+      <div class="search-bar">
+        <input
+          type="text"
+          id="filtro"
+          class="search-input"
+          placeholder="Buscar por cliente ou quadra..."
+          autocomplete="off"
+        >
+      </div>
+
+      <!-- Tabela de Histórico com Coluna de Remoção e Edição -->
+      <div class="table-responsive">
+        <table class="data-table" id="tabela-logs">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Cliente / Atleta</th>
+              <th>Quadra</th>
+              <th>Data</th>
+              <th>Janela Horária</th>
+              <th>Status Spring Mail</th>
+              <th class="col-acoes">Ações</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===================================================================
+       MODAL DE EDIÇÃO DE RESERVA
+       =================================================================== -->
+  <div id="modal-editar-reserva" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>✏️ Editar Reserva</h3>
+        <button type="button" id="btn-fechar-editar" class="modal-close">&times;</button>
+      </div>
+
+      <div id="editar-alerta-erro" class="modal-erro-msg" style="display: none;"></div>
+
+      <form id="form-editar-reserva">
+        <input type="hidden" id="edit-reserva-id">
+
+        <div class="modal-form-group">
+          <label for="edit-cliente">Nome do Cliente / Atleta</label>
+          <input type="text" id="edit-cliente" required autocomplete="off">
+        </div>
+
+        <div class="modal-form-group">
+          <label for="edit-quadra">Quadra</label>
+          <select id="edit-quadra" required></select>
+        </div>
+
+        <div class="modal-form-group">
+          <label for="edit-data">Data da Partida</label>
+          <input type="date" id="edit-data" required>
+        </div>
+
+        <div class="modal-form-row">
+          <div class="modal-form-group">
+            <label for="edit-hora-inicio">Hora Início</label>
+            <input type="time" id="edit-hora-inicio" required>
+          </div>
+          <div class="modal-form-group">
+            <label for="edit-hora-fim">Hora Fim</label>
+            <input type="time" id="edit-hora-fim" required>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" id="btn-cancelar-editar" class="btn btn-secondary">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- ===================================================================
+       MODAL DE EDIÇÃO / ATUALIZAÇÃO DE RESERVA
+       =================================================================== -->
+  <div id="modal-editar-reserva" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>✏️ Editar Reserva</h3>
+        <button type="button" id="btn-fechar-editar" class="modal-close">&times;</button>
+      </div>
+
+      <div id="editar-alerta-erro" class="modal-erro-msg" style="display: none;"></div>
+
+      <form id="form-editar-reserva">
+        <input type="hidden" id="edit-reserva-id">
+
+        <div class="modal-form-group">
+          <label for="edit-cliente">Nome do Cliente / Atleta</label>
+          <input type="text" id="edit-cliente" required autocomplete="off">
+        </div>
+
+        <div class="modal-form-group">
+          <label for="edit-quadra">Quadra</label>
+          <select id="edit-quadra" required></select>
+        </div>
+
+        <div class="modal-form-group">
+          <label for="edit-data">Data da Partida</label>
+          <input type="date" id="edit-data" required>
+        </div>
+
+        <div class="modal-form-row">
+          <div class="modal-form-group">
+            <label for="edit-hora-inicio">Hora Início</label>
+            <input type="time" id="edit-hora-inicio" required>
+          </div>
+          <div class="modal-form-group">
+            <label for="edit-hora-fim">Hora Fim</label>
+            <input type="time" id="edit-hora-fim" required>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" id="btn-cancelar-editar" class="btn btn-secondary">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Atualizar Reserva</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Carrega primeiro os dados partilhados e depois a lógica desta tela -->
+  <script src="js/shared.js"></script>
+  <script src="js/reservar-clientes.js"></script>
+</body>
+</html>

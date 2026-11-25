@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EscritaSport - Grade de Horários &amp; Ocupação</title>
+  <link rel="icon" href="img/sport-favicon.png">
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/grade-horario.css">
+  <link rel="stylesheet" href="https://googleapis.com">
+</head>
+<body>
+
+  <!-- Barra Lateral -->
+  <aside class="sidebar">
+    <div class="brand"><a href="grade-horario.html"><div class="brand-logo">⚡ EscritaSport</div></a></div>
+    <div class="arena-badge">📍 Arena Central Beach &amp; Futsal</div>
+    <ul class="nav-links">
+      <li><a href="grade-horario.html" class="active">📅 Grade de Horários</a></li>
+      <li><a href="reservar-clientes.html">📑 Reservas &amp; Clientes</a></li>
+      <li><a href="quadras.html">🎾 Gestão de Quadras</a></li>
+      <li><a href="configuracoes.html">⚙️ Configurações</a></li>
+      <li><a href="index.html">🚀 Painel Direto (CRUD)</a></li>
+    </ul>
+
+    <!-- Perfil do Dono da Sessão e Botão Sair -->
+    <div class="user-session-box">
+      <div class="user-info">
+        <img src="img/avatar-dono.png" alt="Foto do Gestor" class="user-avatar" id="sessao-foto"
+             onerror="this.onerror=null; this.src='https://ui-avatars.com';">
+        <div class="user-details">
+          <span class="user-name" id="sessao-nome">Carlos Silva</span>
+          <span class="user-role" id="sessao-cargo">Dono da Arena</span>
+        </div>
+      </div>
+      <button type="button" id="btn-sair" class="btn-logout" title="Encerrar sessão">
+        Sair
+      </button>
+    </div>
+  </aside>
+
+  <!-- Conteúdo Principal -->
+  <main class="main-content">
+    <header class="topbar">
+      <h2 class="topbar-title">Grade de Ocupação em Tempo Real</h2>
+      <a href="index.html" class="btn btn-primary">+ Nova Reserva</a>
+    </header>
+
+    <div class="content-body">
+      <!-- KPIs -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="label">Taxa de Ocupação Hoje</div>
+          <div class="value" id="kpi-ocupacao">78%</div>
+          <div class="sub">↗ +12% vs. semana anterior</div>
+        </div>
+        <div class="kpi-card">
+          <div class="label">Reservas Confirmadas</div>
+          <div class="value" id="kpi-reservas-count">24 slots</div>
+          <div class="sub">Beach Tennis &bull; Futsal</div>
+        </div>
+        <div class="kpi-card">
+          <div class="label">Receita Estimada Dia</div>
+          <div class="value">R$ 2.840,00</div>
+          <div class="sub">Preço médio R$ 118,33/h</div>
+        </div>
+      </div>
+
+      <!-- Grade de Horários -->
+      <div class="timeline-container">
+        <div class="timeline-header" id="grade-header">
+          <div>Quadra / Superfície</div>
+        </div>
+        <div id="grade-linhas"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===================================================================
+       MODAL DE RESERVA RÁPIDA (Substitui o alert do navegador)
+       =================================================================== -->
+  <div id="modal-reserva" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>⚡ Reserva Rápida de Horário</h3>
+        <button type="button" id="btn-fechar-modal" class="modal-close">&times;</button>
+      </div>
+
+      <form id="form-reserva-rapida">
+        <!-- Dados ocultos da quadra e hora clicada -->
+        <input type="hidden" id="modal-quadra-id">
+
+        <div class="modal-info-badge">
+          <span id="modal-quadra-nome">Quadra</span> &bull;
+          <strong id="modal-horario-texto">00:00 - 01:00</strong>
+        </div>
+
+        <div class="modal-form-group">
+          <label for="modal-cliente-nome">Nome do Cliente / Atleta</label>
+          <input
+            type="text"
+            id="modal-cliente-nome"
+            placeholder="Ex: Lucas Mendes"
+            required
+            autocomplete="off"
+          >
+        </div>
+
+        <div class="modal-form-group">
+          <label for="modal-data">Data da Partida</label>
+          <input type="date" id="modal-data" required>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" id="btn-cancelar-modal" class="btn btn-secondary">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Confirmar Reserva</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/shared.js"></script>
+  <script src="js/grade-horario.js"></script>
+</body>
+</html>

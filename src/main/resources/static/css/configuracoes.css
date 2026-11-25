@@ -1,0 +1,114 @@
+/* =========================================================================
+   1. GRELHA PRINCIPAL DE CONFIGURAÇÕES
+   ========================================================================= */
+.config-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Duas colunas iguais em ecrãs grandes */
+  gap: 24px;
+}
+
+/* Adaptação para ecrãs menores (tablets e telemóveis) */
+@media (max-width: 960px) {
+  .config-grid {
+    grid-template-columns: 1fr; /* Empilha os cartões numa única coluna */
+  }
+}
+
+/* =========================================================================
+   2. TÍTULOS E CABEÇALHOS
+   ========================================================================= */
+.topbar-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.card-title {
+  margin-bottom: 18px;
+  font-size: 1.05rem;
+  color: #ffffff;
+}
+
+/* =========================================================================
+   3. CAMPOS DE FORMULÁRIO (INPUTS E SELECTS)
+   ========================================================================= */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+/* Estilo escuro padrão para caixas de texto e seletores */
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 11px 14px;
+  background: #0c1017;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+/* Realce da borda quando o campo está selecionado */
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* =========================================================================
+   4. LAYOUTS AUXILIARES (COLUNAS INTERNAS E LINHA DE TESTE)
+   ========================================================================= */
+.grid-2-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.grupo-teste {
+  margin-top: 14px;
+}
+
+/* Alinha o campo de e-mail e o botão "Testar" na mesma linha */
+.input-group-row {
+  display: flex;
+  gap: 8px;
+}
+
+/* =========================================================================
+   5. LINHAS DE OPÇÕES E CHECKBOXES (SWITCHES)
+   ========================================================================= */
+.switch-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.switch-title {
+  font-size: 0.9rem;
+}
+
+.switch-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Dimensionamento e cor temática da caixa de seleção */
+.switch-checkbox {
+  width: 20px !important;
+  height: 20px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+.brand-logo a{
+  text-decoration: none;
+  color: inherit;
+}

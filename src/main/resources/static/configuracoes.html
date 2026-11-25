@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- Configurações de codificação de caracteres e responsividade -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EscritaSport - Configurações do Sistema</title>
+  <link rel="icon" href="img/sport-favicon.png">
+
+
+  <!-- Estilos globais partilhados e estilos específicos desta página -->
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/configuracoes.css">
+
+  <!-- Importação da família tipográfica Plus Jakarta Sans -->
+  <link rel="stylesheet" href="https://googleapis.com">
+</head>
+<body>
+
+  <!-- ===================================================================
+       BARRA LATERAL DE NAVEGAÇÃO (SIDEBAR)
+       =================================================================== -->
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-logo"><a href="index.html">⚡ EscritaSport </a></div></div>
+    <div class="arena-badge">📍 Arena Central Beach &amp; Futsal</div>
+
+    <!-- Menu principal do sistema -->
+    <ul class="nav-links">
+      <li><a href="grade-horario.html">📅 Grade de Horários</a></li>
+      <li><a href="reservar-clientes.html">📑 Reservas &amp; Clientes</a></li>
+      <li><a href="quadras.html">🎾 Gestão de Quadras</a></li>
+      <li><a href="configuracoes.html" class="active">⚙️ Configurações</a></li>
+      <li><a href="index.html">🚀 Painel Direto (CRUD)</a></li>
+    </ul>
+  </aside>
+
+  <!-- ===================================================================
+       ÁREA PRINCIPAL DE CONTEÚDO
+       =================================================================== -->
+  <main class="main-content">
+
+    <!-- Cabeçalho superior da página com botão de ação principal -->
+    <header class="topbar">
+      <h2 class="topbar-title">Parâmetros da Arena &amp; Spring Mail</h2>
+      <button type="button" id="btn-salvar" class="btn btn-primary">Salvar Alterações</button>
+    </header>
+
+    <!-- Corpo da página organizado em grelha de duas colunas -->
+    <div class="content-body">
+      <div class="config-grid">
+        
+        <!-- ===============================================================
+             CARTÃO 1: DADOS GERAIS E REGRAS DE AGENDAMENTO
+             =============================================================== -->
+        <div class="card">
+          <h3 class="card-title">🏢 Dados Gerais &amp; Regras de Conflito</h3>
+          
+          <!-- Campo para o nome do estabelecimento -->
+          <div class="form-group">
+            <label for="nome-arena">Nome Oficial da Arena</label>
+            <input type="text" id="nome-arena" value="Arena Central Beach & Futsal Club">
+          </div>
+
+          <!-- Campos de horário de funcionamento lado a lado -->
+          <div class="form-group">
+            <label>Horário de Operação (Abertura / Fechamento)</label>
+            <div class="grid-2-cols">
+              <input type="time" id="hora-abertura" value="06:00">
+              <input type="time" id="hora-fechamento" value="23:30">
+            </div>
+          </div>
+
+          <!-- Interruptor: Bloqueio de horários sobrepostos -->
+          <div class="switch-row">
+            <div>
+              <strong class="switch-title">Validador de Conflito Ativo</strong>
+              <div class="switch-desc">Bloqueio estrito de sobreposição de horário</div>
+            </div>
+            <input type="checkbox" id="chk-conflito" class="switch-checkbox" checked>
+          </div>
+
+          <!-- Interruptor: Tempo de intervalo entre jogos -->
+          <div class="switch-row">
+            <div>
+              <strong class="switch-title">Intervalo Técnico / Nivelamento</strong>
+              <div class="switch-desc">10 min entre partidas de areia e parquet</div>
+            </div>
+            <input type="checkbox" id="chk-intervalo" class="switch-checkbox" checked>
+          </div>
+        </div>
+
+        <!-- ===============================================================
+             CARTÃO 2: PARÂMETROS DO SERVIDOR DE E-MAIL (SPRING MAIL)
+             =============================================================== -->
+        <div class="card">
+          <h3 class="card-title">📧 Integração Spring Mail (SMTP)</h3>
+          
+          <!-- Endereço do servidor SMTP -->
+          <div class="form-group">
+            <label for="smtp-host">Host SMTP</label>
+            <input type="text" id="smtp-host" value="://escritasport.com">
+          </div>
+
+          <!-- Porta e protocolo de segurança lado a lado -->
+          <div class="grid-2-cols">
+            <div class="form-group">
+              <label for="smtp-porta">Porta</label>
+              <input type="number" id="smtp-porta" value="587">
+            </div>
+            <div class="form-group">
+              <label for="smtp-protocolo">Protocolo</label>
+              <select id="smtp-protocolo">
+                <option selected>STARTTLS (Ativo)</option>
+                <option>SSL</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- E-mail exibido como remetente aos clientes -->
+          <div class="form-group">
+            <label for="smtp-remetente">Remetente Padrão (From Header)</label>
+            <input type="email" id="smtp-remetente" value="reservas@arenacentral.com.br">
+          </div>
+
+          <!-- Secção para testar o envio de e-mail em tempo real -->
+          <div class="form-group grupo-teste">
+            <label for="teste-email">Disparo de Teste em Tempo Real</label>
+            <div class="input-group-row">
+              <input type="email" id="teste-email" placeholder="seu-email@dominio.com">
+              <button type="button" id="btn-testar-email" class="btn btn-secondary">Testar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts globais e comportamento específico desta página -->
+  <script src="js/shared.js"></script>
+  <script src="js/configuracoes.js"></script>
+</body>
+</html>
